@@ -1,0 +1,6 @@
+@DNMOFT.BFE.WebApi_HostAddress = http://localhost:5225
+
+GET {{DNMOFT.BFE.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
