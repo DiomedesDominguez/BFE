@@ -1,14 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net.Http;
 using Microsoft.AspNetCore.Mvc;
-using static Web.Controllers.FilamentTypeController;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json;
 using Newtonsoft.Json;
-using Web.Models;
 using static Web.Models.SeoProduct;
 
 #pragma warning disable CS8604 // Possible null reference argument.
@@ -37,21 +29,22 @@ namespace Web.Controllers
             var seo_product = doc.DocumentNode.Descendants("script").Select(x => x.HasAttributes && x.Attributes["data-desc"] != null && x.Attributes["data-desc"].Value == "seo-product" ? x.InnerText : null).Where(x => x != null).Select(x => JsonConvert.DeserializeObject<Root>(x)).FirstOrDefault();
 
             var records = new List<Filament>();
-            foreach (var item in seo_product.model)
+            if (seo_product != null && seo_product.model != null)
             {
-                records.Add(new Filament(
-                    item.color,
-                    item.offers.price,
-                    seo_product.offers.availability == "InStock",
-                    item.additionalProperty.FirstOrDefault(x => x.name == "Type")?.value == "Refill",
-                    item.additionalProperty.FirstOrDefault(x => x.name == "Size")?.value, // Added null check
-                    item.image));
+                foreach (var item in seo_product.model)
+                {
+                    records.Add(new Filament(
+                        item.color,
+                        item.offers.price,
+                        seo_product.offers.availability == "InStock",
+                        item.additionalProperty.FirstOrDefault(x => x.name == "Type")?.value == "Refill",
+                        item.additionalProperty.FirstOrDefault(x => x.name == "Size")?.value, // Added null check
+                        item.image));
+                }
             }
 
             return records;
-
         }
-
     }
 }
 #pragma warning restore CS8604 // Possible null reference argument.
