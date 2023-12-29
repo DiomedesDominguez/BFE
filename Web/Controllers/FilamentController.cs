@@ -40,12 +40,12 @@ namespace Web.Controllers
             foreach (var item in seo_product.model)
             {
                 records.Add(new Filament(
-                                        item.color,
-                                        item.offers.price,
-                                        seo_product.offers.availability == "InStock",
-                                        item.additionalProperty.Where(x => x.name == "Type").FirstOrDefault().value == "Refill",
-                                        item.additionalProperty.Where(x => x.name == "Size").FirstOrDefault().value,
-                                        item.image));
+                    item.color,
+                    item.offers.price,
+                    seo_product.offers.availability == "InStock",
+                    item.additionalProperty.FirstOrDefault(x => x.name == "Type")?.value == "Refill",
+                    item.additionalProperty.FirstOrDefault(x => x.name == "Size")?.value, // Added null check
+                    item.image));
             }
 
             return records;
