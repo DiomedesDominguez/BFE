@@ -15,7 +15,7 @@ namespace Web.Controllers
         public IEnumerable<Filament> GetFilaments([Required] string name)
         {
             //First, we need to get the URL for the filament type
-            var filamentType = (new FilamentTypeController()).Get().Where(x => x.Name == name).FirstOrDefault();
+            var filamentType = (new FilamentsTypesController()).Get().Where(x => x.Name == name).FirstOrDefault();
 
             //If we don't have a filament type, we can't get any records
             if (filamentType == null)

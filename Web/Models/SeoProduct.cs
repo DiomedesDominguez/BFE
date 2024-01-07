@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
+#pragma warning disable CS8604 // Possible null reference argument.
 namespace Web.Models
 {
     public class SeoProduct
@@ -94,3 +95,4 @@ namespace Web.Models
         }
     }
 }
+#pragma warning restore CS8604 // Possible null reference argument.

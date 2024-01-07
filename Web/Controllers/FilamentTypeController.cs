@@ -4,7 +4,7 @@ namespace Web.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class FilamentTypeController : ControllerBase
+    public class FilamentsTypesController : ControllerBase
     {
         public record FilamentType(string Name, string Url);
         [HttpGet()]
@@ -19,6 +19,7 @@ namespace Web.Controllers
                 new("ABS", "https://us.store.bambulab.com/products/abs-filament"),
                 new("PLA Metal", "https://us.store.bambulab.com/products/pla-metal"),
                 new("PLA Silk", "https://us.store.bambulab.com/products/pla-silk"),
+                new("PLA Silk Dual Color", "https://us.store.bambulab.com/products/pla-silk-dual-color"),
                 new("PLA Marble", "https://us.store.bambulab.com/products/pla-marble"),
                 new("PLA Tough", "https://us.store.bambulab.com/products/pla-tough"),
                 new("PLA Glow", "https://us.store.bambulab.com/products/pla-glow"),
@@ -34,7 +35,10 @@ namespace Web.Controllers
                 new("PA6-CF", "https://us.store.bambulab.com/products/pa6-cf"),
                 new("PET-CF", "https://us.store.bambulab.com/products/pet-cf"),
                 new("PC", "https://us.store.bambulab.com/products/pc-filament"),
-                new("PLA Aero", "https://us.store.bambulab.com/products/pla-aero")
+                new("PLA Aero", "https://us.store.bambulab.com/products/pla-aero"),
+                new("Essential Pack", "https://us.store.bambulab.com/products/essential-pack"),
+                new("PLA Basic Refill 2 Rolls", "https://us.store.bambulab.com/collections/bambu-lab-3d-printer-filament/products/pla-basic-refill-bundle"),
+                new("PLA Matte Refill 2 Rolls", "https://us.store.bambulab.com/collections/bambu-lab-3d-printer-filament/products/pla-matte-refill-bundle")
             };
 
             return records.OrderBy(x => x.Name).ToList();
