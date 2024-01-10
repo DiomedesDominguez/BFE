@@ -20,9 +20,10 @@ namespace Web.Controllers
         /// Initializes a new instance of the <see cref="FilamentController"/> class.
         /// </summary>
         /// <param name="configuration">The configuration.</param>
-        public FilamentController(IConfiguration configuration)
+        public FilamentController(IConfiguration configuration, IMemoryCache cache)
         {
             _configuration = configuration;
+            _cache = cache;
         }
 
         /// <summary>
